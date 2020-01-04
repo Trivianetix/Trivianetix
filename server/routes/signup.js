@@ -1,5 +1,5 @@
 const express = require ('express');
-const userdataController = require('../controller/userdataController');
+const userModelController = require('../controller/userModelController');
 const signup = express.Router();
 
 signup.get('/', (req, res) => {
