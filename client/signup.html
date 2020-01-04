@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form class="sign-up-form" action="/signup" method="POST"> 
+        <label>User Name: </label>
+        <input type="text" name="username" placeholder="User Name"><br>
+        <label>Password: </label>
+        <input type="text" name="password" placeholder="Password"><br>
+        <label>State: </label>
+        <select>
+            <option value="None"></option>
+            <option value="California">California</option>
+            <option value="New York">New York</option>
+        </select> <br>
+
+        <label>Education: </label>
+        <select>
+            <option value="None"></option>
+            <option value="PhD">PhD</option>
+            <option value="Some">Some</option>
+        </select> <br>
+        <label>Age: </label>
+        <input type="text" name="age" placeholder="0"><br>
+        <input type="submit" value="Sign Up">
+      </form>
+</body>
+</html>

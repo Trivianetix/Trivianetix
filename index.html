@@ -5,9 +5,14 @@
     <title></title>
   </head>
   <body>
-    <div id='root'></div>
-    <p>Lorem Ipsum, Dolor</p>
+    <form class="sign-in" action="/profile" method="POST"> 
+      <input type="text" name="username" placeholder="User Name">
+      <input type="text" name="password" placeholder="Password">
+      <input type="submit" value="Log In">
+    </form>
 
-    <script src="./build/bundle.js"></script>
+    <form class="sign-up" action="/signup" method="GET">
+      <input type="submit" value="Sign Up">
+    </form>
   </body>
 </html>
