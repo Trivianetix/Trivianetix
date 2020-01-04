@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
+import UserInfo from './UserInfo.jsx';
+import Stats from './Stats.jsx';
+import GameContainer from './GameContainer.jsx';
 
 class App extends Component {
   render () {
+
     return (
       <div>
-        <p>LOREM IPSUM REACTO, DID THIS SHOW?</p>
+        <UserInfo />
+        <Stats />
+        <GameContainer />
       </div>
     )
   }
