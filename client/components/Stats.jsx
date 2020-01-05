@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 
 class Stats extends Component {
-  render () {
+  render() {
+
+    const questionsPosed = this.props.stats.gamesPlayed*10;
+    const questionsRight = this.props.stats.correctAnswers;
+    const percentageRight = Math.floor(questionsRight/questionsPosed * 100);
 
     return (
       <div>
-        <p>This is Stats</p>
+        <p>You're Score: {percentageRight}%</p>
       </div>
     )
   }

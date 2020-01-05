@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
 class GameContainer extends Component {
-  render () {
+  render() {
 
     return (
       <div>
-        <p>This is Game Container</p>
+        <p>Question. {this.props.results[0].question}</p>
       </div>
     )
   }

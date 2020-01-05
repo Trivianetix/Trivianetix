@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
 class UserInfo extends Component {
-  render () {
-
+  render() {
+    const username = this.props.username
     return (
       <div>
-        <p>This is UserInfo</p>
+        <p>How's it going {this.props.username}?</p>
       </div>
     )
   }
