@@ -1,20 +1,16 @@
 const express = require ('express');
-const userModelController = require('../controller/userModelController');
 const signup = express.Router();
 const path = require('path');
+
+const userModelController = require('../controller/userModelController');
 
 signup.get('/', (req, res) => {
     res.status(200).sendFile(path.resolve(__dirname, '../../client/signup.html'));
 });
 
 signup.post('/', userModelController.createUser, (req, res) => {
-    res.status(200).json(res.locals.user)
+    res.status(200).redirect('/');
 })
 
-// signup.post('/', (req, res) => {
-//     console.log(req.body);
-    
-//     // res.status(200).json(res.locals.user)
-// })
 
 module.exports = signup;
