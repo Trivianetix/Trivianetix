@@ -1,14 +1,19 @@
 const db = require('../data/userModel');
 
-const userModelController = {}; 
+const userModelController = {};
 
-//action whenever a new user signs up 
+//action whenever a new user signs up
 userModelController.createUser = (req, res, next) => {
     const { username, password, age, state, education } = req.body;
     console.log('req.body: ', req.body);
     const text = `
+<<<<<<< HEAD
             INSERT INTO users (username, password, age, state, education, games_played, correct_answers) 
             values($1, $2, $3, $4, $5, $6, $7)
+=======
+            INSERT INTO users (username, password, age)
+            values($1, $2, $3)
+>>>>>>> a531bbe0034e7a14e5f4f077d5bd52ea5c6267f1
         `
     const values = [username, password, age, state, education, 0, 0];
 
@@ -42,14 +47,14 @@ userModelController.findUser = (req, res, next) => {
                 }
             })
         .catch(err => console.log(err))
-    
+
 }
 
 // used for when a user wants to update their information -- stretch feature?
 userModelController.updateUser = (req, res, next) => {
     const { username, password, age } = req.body;
     const text = `
-        UPDATE users 
+        UPDATE users
         SET username = '${username}'
         SET password = '${password}'
         SET age = ${age}
