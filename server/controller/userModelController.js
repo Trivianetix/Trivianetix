@@ -83,20 +83,21 @@ userModelController.questions = async (req, res, next) => {
 userModelController.updateUser = async (req, res, next) => {
     const { username, correctAnswers } = req.body;
     const text1 = `
-        SELECT games_played
+        SELECT games_played, correct_answers
         FROM users
         WHERE username = '${username}'
     `
 
 await db.query(text1)
-    .then(response => res.locals.gamesPlayed = response.rows[0].games_played)
+    .then(response => res.locals.updatedStats = response.rows[0])
     .catch(err => console.log(err))
 
-    const updatedGame = res.locals.gamesPlayed + 1;
+    res.locals.games_played = res.locals.games_played + 1;
+    res.locals.correct_answers = res.locals.correct_answers + correctAnswers;
 
     const text2 = `
         UPDATE users
-        SET games_played = '${updatedGame}', correct_answers = '${correctAnswers}'
+        SET games_played = '${res.locals.games_played}', correct_answers = '${res.locals.correct_answers}'
         WHERE username = '${username}'
     `
     // const values = [username, password, age];

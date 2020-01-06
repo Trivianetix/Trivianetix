@@ -30,15 +30,16 @@ body {
     font-size: 15px;
     padding-bottom: 5px;
     color: #4e3043;
-    text-align: center
+    text-align: center;
+    font-family: 'Luckiest Guy';
 
 }
 .sign-in input[type=text],
 .sign-in input[type=password] {
     /* Size and position */
-    width: 100%;
+    width: 95%;
     padding: 8px 4px 8px 10px;
-    margin-bottom: 15px;
+    margin-bottom: 0px;
     color: black;
 
     /* Styles */
@@ -58,7 +59,7 @@ body {
     /* Font styles */
     font-family: 'Raleway', 'Lato', Arial, sans-serif;
     color: black;
-    font-size: 15px;
+    font-size: 10px;
 }
 .sign-in input::-webkit-input-placeholder {
     color: rgba(37,21,26,0.5);
@@ -68,15 +69,18 @@ body {
 .sign-in input:-moz-placeholder {
     color: rgba(37,21,26,0.5);
     text-shadow: 0 1px 0 rgba(255,255,255,0.15);
+    font-family: 'Luckiest Guy';
 }
 
 .sign-in input:-ms-input-placeholder {
     color: rgba(37,21,26,0.5);
     text-shadow: 0 1px 0 rgba(255,255,255,0.15);
+    font-family: 'Luckiest Guy';
 }
 .sign-in input[type=text]:hover,
 .sign-in input[type=password]:hover {
     border-color: #333;
+    font-family: 'Luckiest Guy';
 }
 
 .sign-in input[type=text]:focus,
@@ -87,6 +91,8 @@ body {
         inset 0 1px 1px rgba(0,0,0,0.1),
         0 0 0 3px rgba(255,255,255,0.15);
     outline: none;
+    font-family: 'Luckiest Guy';
+    width: 100%;
 }
 
 /* Fallback */
@@ -114,18 +120,22 @@ body {
     text-shadow: 0 1px 0 rgba(0,0,0,0.3);
     font-size: 16px;
     font-weight: bold;
-    font-family: 'Raleway', 'Lato', Arial, sans-serif;
+    font-family: 'Luckiest Guy', cursive;
 }
 
 .sign-in input[type=submit]:hover {
     box-shadow: 
         inset 0 1px rgba(255,255,255,0.2), 
         inset 0 20px 30px rgba(99,64,86,0.5);
+    font-weight: bolder;
+    font-size: 23px;
 }
 
 /* Fallback */
 .no-boxshadow .sign-in input[type=submit]:hover {
     background: #594642;
+    font-weight: bolder;
+    font-size: 20px;
 }
 .sign-in label {
     display: none;
@@ -172,13 +182,14 @@ body {
     color: white;
     text-shadow: 0 1px 0 rgba(0,0,0,0.3);
     font-size: 16px;
-    font-weight: bold;
-    font-family: 'Raleway', 'Lato', Arial, sans-serif;
+    font-family: 'Luckiest Guy';
 }
 .sign-up input[type=submit]:hover {
     box-shadow: 
         inset 0 1px rgba(255,255,255,0.2), 
         inset 0 20px 30px rgba(99,64,86,0.5);
+    font-weight: bolder;
+    font-size: 20px;
 }
 
 /* Fallback */
