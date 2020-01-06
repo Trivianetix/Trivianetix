@@ -20,7 +20,7 @@ body {
 
 .sign-in h1 {
     font-size: 30px;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     color: #4e3043;
     text-align: center;
     font-family: 'Luckiest Guy', cursive;
@@ -57,8 +57,8 @@ body {
 
     /* Font styles */
     font-family: 'Raleway', 'Lato', Arial, sans-serif;
-    color: #fff;
-    font-size: 13px;
+    color: black;
+    font-size: 15px;
 }
 .sign-in input::-webkit-input-placeholder {
     color: rgba(37,21,26,0.5);
@@ -141,10 +141,60 @@ body {
     display: block;
 }
 
-.sign-up-button {
-        display:block;
-        height: 300px;
-        width: 300px;
-        border-radius: 50%;
-        border: 1px solid red;
+.sign-up {
+    text-align: center;
+}
+
+#first-time {
+    text-align: center;
+    font-family: 'Luckiest Guy', cursive;
+    color: #4e3043;
+    font-size: 20px;
+
+}
+
+.sign-up input[type=submit] {
+    /* Size and position */
+    width: 23%;
+    padding: 8px 5px;
+    
+    /* Styles */
+    background: linear-gradient(rgba(27, 202, 11, 0.5), rgba(102, 226, 30, 0.7));    
+    border-radius: 5px;
+    border: 1px solid #4e3043;
+    box-shadow: 
+    	inset 0 1px rgba(255,255,255,0.4), 
+    	0 2px 1px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+
+    /* Font styles */
+    color: white;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Raleway', 'Lato', Arial, sans-serif;
+}
+.sign-up input[type=submit]:hover {
+    box-shadow: 
+        inset 0 1px rgba(255,255,255,0.2), 
+        inset 0 20px 30px rgba(99,64,86,0.5);
+}
+
+/* Fallback */
+.no-boxshadow .sign-up input[type=submit]:hover {
+    background: #594642;
+}
+.sign-up label {
+    display: none;
+    padding: 0 0 5px 2px;
+    cursor: pointer;
+}
+
+.sign-up label:hover ~ input {
+    border-color: #333;
+}
+
+.no-placeholder .sign-in label {
+    display: block;
 }
