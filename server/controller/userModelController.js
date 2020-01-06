@@ -1,4 +1,6 @@
 const db = require('../data/userModel');
+const fs = require('fs');
+const fetch = require("node-fetch");
 
 const userModelController = {};
 
@@ -29,7 +31,7 @@ userModelController.findUser = (req, res, next) => {
             WHERE username = '${username}' AND password = '${password}'
 
     `
-    const values = [username, password];
+    // const values = [username, password];
     db.query(text)
         .then(response => {
                 //if the user doesn't exist or username/password is incorrect
@@ -45,22 +47,77 @@ userModelController.findUser = (req, res, next) => {
 
 }
 
-// used for when a user wants to update their information -- stretch feature?
-userModelController.updateUser = (req, res, next) => {
-    const { username, password, age } = req.body;
+// used to find games played and correct answers
+userModelController.findStats = (req, res, next) => {
     const text = `
-        UPDATE users
-        SET username = ${username}
-        SET password = ${password}
-        SET age = ${age}
-        WHERE username = ${username}
+        SELECT games_played, correct_answers
+        FROM users
+        WHERE username = '${req.params.username}'
     `
-    const values = [username, password, age];
+    db.query(text)
+        .then(response => {
+            if (response.rows[0]) {
+                console.log('User ', req.params.username , ' Games played: ', response.rows[0].games_played , ' Correct answers: ', response.rows[0].correct_answers);
+                res.locals.stats = response.rows[0];   
+                next();
+            } else {
+                console.log('Error occurred. Username is not sending properly.');
+                res.send('Error occurred. Username is not sending properly.');
+            }
+        })
+    .catch(err => console.log(err))
+}
 
-    db.query(text, values)
+userModelController.questions = async (req, res, next) => {
+    const url = 'https://opentdb.com/api.php?amount=10&category=9&type=multiple';
+    await fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            res.locals.results = data.results;
+        })
+        .catch(err => console.log(err));
+    next();
+}
+
+// used for when a user wants to update their information -- stretch feature?
+userModelController.updateUser = async (req, res, next) => {
+    const { username, correctAnswers } = req.body;
+    const text1 = `
+        SELECT games_played
+        FROM users
+        WHERE username = '${username}'
+    `
+
+await db.query(text1)
+    .then(response => res.locals.gamesPlayed = response.rows[0].games_played)
+    .catch(err => console.log(err))
+
+    const updatedGame = res.locals.gamesPlayed + 1;
+
+    const text2 = `
+        UPDATE users
+        SET games_played = '${updatedGame}', correct_answers = '${correctAnswers}'
+        WHERE username = '${username}'
+    `
+    // const values = [username, password, age];
+
+   await db.query(text2)
         .then(response => console.log(response))
         .catch(err => console.log(err))
 
     next();
 }
+
+userModelController.deleteUser = async (req, res, next) => {
+    const { username } = req.body;
+    const text = `
+        DELETE FROM users
+        WHERE username = '${username}'
+    `
+    await db.query(text)
+        .then(response => console.log(`${username} has been deleted`))
+        .catch(err => console.log(err))
+    next();
+}
+
 module.exports = userModelController;
