@@ -1,0 +1,59 @@
+body {
+    background: url(https://www.faarmembers.com/wp-content/uploads/2019/01/trivia-background.jpg);
+    background-size:      cover;                      
+    background-repeat:   no-repeat;
+    background-position: top; 
+}  
+
+.sign-up-form {
+    width: 500px;
+    padding: 20px;
+    text-align: center;
+    position: absolute;
+    background: url(https://thinkpodagency.com/wp-content/uploads/2015/10/blog-signup-background.jpg);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .sign-up-form h1 {
+      color: white;
+      font-size: 45px;
+      font-family: 'Pacifico', cursive;
+      text-decoration: none;
+  }
+
+  .sign-up-form input,
+  .sign-up-form select  {
+      display: block;
+      width: 100%;
+      padding: 0 16px;
+      height: 44px;
+      color: black;
+      font-size: 15px;
+      box-sizing: border-box;
+  }
+  .txtb{
+    margin: 20px 0;
+    background: rgba(255,255,255,.5);
+    border-radius: 6px;
+  }
+  .signup-btn{
+    margin-top: 60px;
+    margin-bottom: 20px;
+    background: #487eb0;
+    color: #fff;
+    border-radius: 44px;
+    cursor: pointer;
+    transition: 0.8s;
+    text-align: center;
+  }
+  .signup-btn:hover{
+    transform: scale(0.96);
+  }
+  .sign-up-form :hover{
+    background: rgba(185, 182, 182, 0.3);
+  }
+  .sign-up-form h1:hover {
+      background: none;
+  }

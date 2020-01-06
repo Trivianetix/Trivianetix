@@ -6,17 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../signup.css">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <form class="sign-up-form" action="/signup" method="POST">
-        <label>Username: </label>
-        <input type="text" name="username" placeholder="username"><br>
-        <label>Password: </label>
-        <input type="password" name="password" placeholder="password"><br>
-        <label>State: </label>
-        <select name="state">
+        <h1>Sign Up</h1>
+        <input class="txtbx" type="text" name="username" placeholder="Username"><br>
+        <label></label>
+        <input class="txtbx" type="password" name="password" placeholder="Password"><br>
+        <label></label>
+        <select class="txtbx" name="state">
             <option value="" hidden disabled selected>Select your state</option>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
@@ -72,8 +73,8 @@
             <option value="WY">Non US Resident</option>
         </select> <br>
 
-        <label>Education: </label>
-        <select name="education">
+        <label></label>
+        <select class="txtbx" name="education">
             <option value="" hidden disabled selected>Select highest level of education</option>
             <option value="No formal education">Current K-12 Student</option>
             <option value="GED">GED</option>
@@ -82,9 +83,9 @@
             <option value="Master's degree">Master's degree</option>
             <option value="Doctorate or higher">Doctorate or higher</option>
         </select> <br>
-        <label>Age: </label>
-        <input type="text" name="age" placeholder="Ex: 21" /><br>
-        <input type="submit" value="Sign Up" />
+        <label></label>
+        <input class="txtbx" type="text" name="age" placeholder="Age" /><br>
+        <input class="signup-btn" type="submit" value="Sign Up" />
     </form>
 </body>
 
