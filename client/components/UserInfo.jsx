@@ -5,7 +5,7 @@ class UserInfo extends Component {
     const username = this.props.username
     return (
       <div>
-        <p>How's it going {this.props.username}?</p>
+        <h1 className="header-tag">How's it going {this.props.username}?</h1>
       </div>
     )
   }

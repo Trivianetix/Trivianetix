@@ -5,7 +5,7 @@ class GameContainer extends Component {
 
     return (
       <div>
-        <p>Question. {this.props.results[0].question}</p>
+        <p className="question-tag">Question. {this.props.results[0].question}</p>
       </div>
     )
   }

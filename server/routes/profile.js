@@ -5,6 +5,10 @@ const profile = express.Router();
 const userModelController = require('../controller/userModelController');
 const cookieController = require('../controller/cookieController');
 
+profile.get('/profile.css', (req, res) => {
+    res.status(200).sendFile(path.resolve(__dirname, '../../profile.css'))
+});
+
 profile.post('/', userModelController.findUser, cookieController.setCookie, (req, res) => {
     res.status(200).sendFile(path.resolve(__dirname, "../../client/profile.html"));
 })
