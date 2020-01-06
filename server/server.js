@@ -3,15 +3,17 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser');
 
 const signupRouter = require('./routes/signup');
 const loginRouter = require('./routes/login');
 const profileRouter = require('./routes/profile');
+const triviaRouter = require('./routes/trivia');
 
 // app.use(express.json())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded( {extended: true} ))
-
+app.use(cookieParser());
 // app.get('/api', (req, res) => {
 //   res.send('hi');
 // })
@@ -19,6 +21,8 @@ app.use(bodyParser.urlencoded( {extended: true} ))
 app.use('/signup', signupRouter);
 
 app.use('/profile', profileRouter);
+
+app.use('/trivia', triviaRouter);
 
 app.use('/', loginRouter);
 
