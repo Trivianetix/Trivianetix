@@ -9,7 +9,7 @@ profile.post('/', userModelController.findUser, cookieController.setCookie, (req
     res.status(200).sendFile(path.resolve(__dirname, "../../client/profile.html"));
 })
 
-profile.post('/update', userModelController.updateUser, (req, res) => {
+profile.put('/update', userModelController.updateUser, (req, res) => {
     res.status(200).send('profile successfully updated!');
 })
 
