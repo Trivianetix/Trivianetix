@@ -7,9 +7,10 @@ const userModelController = require('../controller/userModelController');
 
 login.get('/', (req, res) => {
     res.status(200).sendFile(path.resolve(__dirname, '../../index.html'))
-})
-login.get('/styles.css', (req, res) => {
-    res.status(200).sendFile(path.resolve(__dirname, '../../styles.css'))
+});
+
+login.get('/index.css', (req, res) => {
+    res.status(200).sendFile(path.resolve(__dirname, '../../index.css'))
 })
 
 //should move the login post to here?
