@@ -6,7 +6,7 @@ class Stats extends Component {
     const questionsRight = this.props.stats.correctAnswers;
     const percentageRight = Math.floor((questionsRight / questionsPosed) * 100);
     let gameMode = this.props.gameMode;
-    let scoreBoard = <p>You're Score: {percentageRight}%</p>;
+    let scoreBoard = <p>Your Score: {percentageRight}%</p>;
 
     return (
       <div>{scoreBoard}</div>

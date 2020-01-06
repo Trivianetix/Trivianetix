@@ -8,41 +8,41 @@ class App extends Component {
     super(props);
     this.state = {
     //ACTUAL DEFAULT
-      // username: document.cookie something something something,
-      // gameMode: false,
-      // results: [],
-      // stats: {},
-      //      stats: {gamesPlayed: 5, correctAnswers: 12},
-      // correctResponses: [],
-      // incorrectResponses: [],
-      // question:{}
-
-      //MOCK DATA
-      username: "JJ",
+      username: document.cookie.slice(9),
       gameMode: false,
-      results: [
-        {
-          category: "General Knowledge",
-          type: "multiple",
-          difficulty: "easy",
-          question: "Which one of these Swedish companies was founded in 1943?",
-          correct_answer: "IKEA",
-          incorrect_answers: ["H &; M", "Lindex", "Clas Ohlson"]
-        },
-        {
-          category: "General Knowledge",
-          type: "multiple",
-          difficulty: "easy",
-          question: "Which one of these Swedish companies was founded in 1943?",
-          correct_answer: "IKEA",
-          incorrect_answers: ["H &; M", "Lindex", "Clas Ohlson"]
-        }
-      ],
-      stats: { gamesPlayed: 5, correctAnswers: 12 },
+      results: [],
+      stats: {gamesPlayed: 0, correctAnswers: 0},
       correctResponses: [],
       incorrectResponses: [],
       question:{},
-      choice: 'none',
+      choice:'none'
+
+      //MOCK DATA
+      // username: document.cookie.slice(9),
+      // gameMode: false,
+      // results: [
+      //   {
+      //     category: "General Knowledge",
+      //     type: "multiple",
+      //     difficulty: "easy",
+      //     question: "Which one of these Swedish companies was founded in 1943?",
+      //     correct_answer: "IKEA",
+      //     incorrect_answers: ["H &; M", "Lindex", "Clas Ohlson"]
+      //   },
+      //   {
+      //     category: "General Knowledge",
+      //     type: "multiple",
+      //     difficulty: "easy",
+      //     question: "Which one of these Swedish companies was founded in 1943?",
+      //     correct_answer: "IKEA",
+      //     incorrect_answers: ["H &; M", "Lindex", "Clas Ohlson"]
+      //   }
+      // ],
+      // stats: { gamesPlayed: 5, correctAnswers: 12 },
+      // correctResponses: [],
+      // incorrectResponses: [],
+      // question:{},
+      // choice: 'none',
     };
 
     // Function binds=================================================
@@ -51,18 +51,20 @@ class App extends Component {
   }
 
 // Wait until server is working to test correct data
-  // componentOnMount(){
-  //   fetch(`/trivia/${this.state.username})
-  //   .then(res => res.json())
-  //   .then(data => {
-  //     const { username, results, gamesPlayed, correctAnswers}
-  //     this.setState({
-  //       username,
-  //       results,
-  //       stats: { gamesPlayed, correctAnswers },
-  //     })
-  //   })
-  // }
+  componentDidMount() {
+    console.log('MOUNTED');
+    fetch(`/trivia/${this.state.username}`)
+    .then(res => res.json())
+    .then(data => {
+      const { username, results, gamesPlayed, correctAnswers} = data;
+      this.setState({
+        username,
+        results,
+        stats: { gamesPlayed, correctAnswers },
+      })
+    })
+    .catch((err) => { console.log(err); })
+  }
 
   startGame() {
     let gameMode = this.state.gameMode;
@@ -112,11 +114,21 @@ class App extends Component {
 
   sendResponse() {
     console.log('Sending Repsonse...');
+    fetch('/profile/update', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        correctAnswers: this.state.correctResponses.length,
+      }),
+    }).catch(err => {
+      console.log(err);
+    })
   }
 
   render() {
-
-
     return (
       <div className="app">
         {/* ===================================================================================== */}
