@@ -1,16 +1,16 @@
-const path = require("path");
+const path = require('path');
 
 module.exports = {
-  entry: "./client/",
+  entry: './client/',
   output: {
-    path: path.resolve(__dirname, "build"),
-    filename: "bundle.js"
+    path: path.resolve(__dirname, 'build'),
+    filename: 'bundle.js',
   },
   devServer: {
-    // contentBase: path.resolve(__dirname, "build")
-    publicPath: "/build/",
+    // contentBase: __dirname,
+    publicPath: '/build/',
     proxy: {
-      '/': 'http://localhost:3000',
+      '/api': 'http://localhost:3000',
     },
   },
   mode: process.env.NODE_ENV,
@@ -20,16 +20,22 @@ module.exports = {
         test: /\.jsx?/,
         exclude: /(node_modules)/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: ["@babel/preset-env", "@babel/preset-react"]
+            presets: [
+              '@babel/preset-env',
+              '@babel/preset-react',
+            ],
           }
         }
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
-      }
-    ]
-  }
-};
+        use: [
+          'style-loader',
+          'css-loader',
+        ],
+      },
+    ],
+  },
+}
