@@ -8,7 +8,7 @@ class App extends Component {
     super(props);
     this.state = {
     //ACTUAL DEFAULT
-      // username: '',
+      // username: document.cookie something something something,
       // gameMode: false,
       // results: [],
       // stats: {},
@@ -35,18 +35,18 @@ class App extends Component {
 
 
 // Wait until server is working to test correct data
-  // componentOnMount(){
-  //   fetch('/profile')
-  //   .then(res => res.json())
-  //   .then(data => {
-  //     const { username, results, gamesPlayed, correctAnswers}
-  //     this.setState({
-  //       username,
-  //       results,
-  //       stats: { gamesPlayed, correctAnswers },
-  //     })
-  //   })
-  // }
+  componentOnMount(){
+    fetch(`/trivia/${this.state.username})
+    .then(res => res.json())
+    .then(data => {
+      const { username, results, gamesPlayed, correctAnswers}
+      this.setState({
+        username,
+        results,
+        stats: { gamesPlayed, correctAnswers },
+      })
+    })
+  }
 
   render() {
 
