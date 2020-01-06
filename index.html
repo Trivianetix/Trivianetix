@@ -4,19 +4,32 @@
 <head>
   <meta charset="utf-8">
   <title>Trivianetix login page</title>
+  <link rel="stylesheet" href="./styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <h3 id="loginHeader">Please login to Trivianetix</h3>
   <form class="sign-in" action="/profile" method="POST">
-    <input type="text" name="username" placeholder="User Name">
-    <input type="password" name="password" placeholder="Password">
-    <input type="submit" value="Log In">
+    <h1 id="loginHeader">Welcome to Trivianetix!</h1>
+    <h2>Please Login</h2>
+    <p>
+      <label for="login">Username or email</label>
+      <input type="text" name="login" placeholder="Username or email" required>
+    </p>
+    <p>
+      <label for="password">Password</label>
+      <input type="password" name='password' placeholder="Password" required>
+    </p>
+
+    <p>
+      <input type="submit" name="submit" value="Log In">
+    </p>
   </form>
+
   <p id="signUpPTag">First Time? <br> Sign up here!</p>
 
   <form class="sign-up" action="/signup" method="GET">
-    <input type="submit" value="Sign Up">
+    <input id='sign-up-button' type="submit" value="Sign Up">
   </form>
   
 </body>
