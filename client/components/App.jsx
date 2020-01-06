@@ -38,20 +38,21 @@ class App extends Component {
 
     // Function binds=================================================
     this.startGame = this.startGame.bind(this);
+  }
 
 // Wait until server is working to test correct data
-  componentOnMount(){
-    fetch(`/trivia/${this.state.username})
-    .then(res => res.json())
-    .then(data => {
-      const { username, results, gamesPlayed, correctAnswers}
-      this.setState({
-        username,
-        results,
-        stats: { gamesPlayed, correctAnswers },
-      })
-    })
-  }
+  // componentOnMount(){
+  //   fetch(`/trivia/${this.state.username})
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     const { username, results, gamesPlayed, correctAnswers}
+  //     this.setState({
+  //       username,
+  //       results,
+  //       stats: { gamesPlayed, correctAnswers },
+  //     })
+  //   })
+  // }
 
   startGame(){
     let gameMode = true;
