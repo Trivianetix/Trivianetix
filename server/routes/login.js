@@ -12,5 +12,6 @@ login.get('/styles.css', (req, res) => {
     res.status(200).sendFile(path.resolve(__dirname, '../../styles.css'))
 })
 
+//should move the login post to here?
 
 module.exports = login;
