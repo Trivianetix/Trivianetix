@@ -1,12 +1,12 @@
 const db = require('../data/userModel');
 
-const userModelController = {}; 
+const userModelController = {};
 
-//action whenever a new user signs up 
+//action whenever a new user signs up
 userModelController.createUser = (req, res, next) => {
     const { username, password, age } = req.body;
     const text = `
-            INSERT INTO users (username, password, age) 
+            INSERT INTO users (username, password, age)
             values($1, $2, $3)
         `
     const values = [username, password, age];
@@ -41,14 +41,14 @@ userModelController.findUser = (req, res, next) => {
                 }
             })
         .catch(err => console.log(err))
-    
+
 }
 
 // used for when a user wants to update their information -- stretch feature?
 userModelController.updateUser = (req, res, next) => {
     const { username, password, age } = req.body;
     const text = `
-        UPDATE users 
+        UPDATE users
         SET username = '${username}'
         SET password = '${password}'
         SET age = ${age}
