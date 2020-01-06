@@ -13,4 +13,8 @@ profile.put('/update', userModelController.updateUser, (req, res) => {
     res.status(200).send('profile successfully updated!');
 })
 
+profile.delete('/delete', userModelController.deleteUser, (req, res) => {
+    res.status(200).send('User has been deleted');
+})
+
 module.exports = profile;

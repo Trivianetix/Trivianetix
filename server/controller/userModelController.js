@@ -107,4 +107,17 @@ await db.query(text1)
 
     next();
 }
+
+userModelController.deleteUser = async (req, res, next) => {
+    const { username } = req.body;
+    const text = `
+        DELETE FROM users
+        WHERE username = '${username}'
+    `
+    await db.query(text)
+        .then(response => console.log(`${username} has been deleted`))
+        .catch(err => console.log(err))
+    next();
+}
+
 module.exports = userModelController;
