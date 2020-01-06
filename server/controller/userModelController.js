@@ -9,7 +9,7 @@ userModelController.createUser = (req, res, next) => {
     const { username, password, age, state, education } = req.body;
     console.log('req.body: ', req.body);
     const text = `
-            INSERT INTO users (username, password, age, state, education, games_played, correct_answers) 
+            INSERT INTO users (username, password, age, state, education, games_played, correct_answers)
             values($1, $2, $3, $4, $5, $6, $7)
         `
     const values = [username, password, age, state, education, 0, 0];
@@ -58,7 +58,7 @@ userModelController.findStats = (req, res, next) => {
         .then(response => {
             if (response.rows[0]) {
                 console.log('User ', req.params.username , ' Games played: ', response.rows[0].games_played , ' Correct answers: ', response.rows[0].correct_answers);
-                res.locals.stats = response.rows[0];   
+                res.locals.stats = response.rows[0];
                 next();
             } else {
                 console.log('Error occurred. Username is not sending properly.');
@@ -92,8 +92,8 @@ await db.query(text1)
     .then(response => res.locals.updatedStats = response.rows[0])
     .catch(err => console.log(err))
 
-    res.locals.games_played = res.locals.games_played + 1;
-    res.locals.correct_answers = res.locals.correct_answers + correctAnswers;
+    res.locals.games_played = res.locals.updatedStats.games_played + 1;
+    res.locals.correct_answers = res.locals.updatedStats.correct_answers + correctAnswers;
 
     const text2 = `
         UPDATE users
