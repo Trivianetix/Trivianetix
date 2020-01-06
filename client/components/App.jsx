@@ -28,16 +28,26 @@ class App extends Component {
           question: "Which one of these Swedish companies was founded in 1943?",
           correct_answer: "IKEA",
           incorrect_answers: ["H &; M", "Lindex", "Clas Ohlson"]
+        },
+        {
+          category: "General Knowledge",
+          type: "multiple",
+          difficulty: "easy",
+          question: "Which one of these Swedish companies was founded in 1943?",
+          correct_answer: "IKEA",
+          incorrect_answers: ["H &; M", "Lindex", "Clas Ohlson"]
         }
       ],
       stats: { gamesPlayed: 5, correctAnswers: 12 },
       correctResponses: [],
       incorrectResponses: [],
-      question:{}
+      question:{},
+      choice: 'none',
     };
 
     // Function binds=================================================
     this.startGame = this.startGame.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
 // Wait until server is working to test correct data
@@ -54,22 +64,55 @@ class App extends Component {
   //   })
   // }
 
-  startGame(){
-    let gameMode = true;
+  startGame() {
+    let gameMode = this.state.gameMode;
     let results = [...this.state.results];
+    let question = this.state.question;
 
     // populate question
-    let question = results.pop();
-
+    if (results.length > 0) {
+      question = results.pop();
+      gameMode = true;
+    }
     // Updating state
     this.setState({
       gameMode,
       results,
       question,
+      choice: 'pending',
     })
-
   }
 
+  handleChange(e) {
+    let gameMode = this.state.gameMode;
+    const choice = e.target.value;
+    const correct = this.state.question.correct_answer;
+    const correctResponses = [...this.state.correctResponses];
+    const incorrectResponses = [...this.state.incorrectResponses];
+    console.log('button value', e.target.value);
+    console.log('correct', correct);
+    if (choice === correct) {
+      correctResponses.push(this.state.question)
+    } else {
+      incorrectResponses.push(this.state.question);
+    }
+    if (this.state.results.length > 0) {
+      this.startGame();
+    } else {
+      this.sendResponse();
+      gameMode = false;
+    }
+    e.target.checked = false;
+    this.setState({
+      gameMode,
+      correctResponses,
+      incorrectResponses,
+    })
+  }
+
+  sendResponse() {
+    console.log('Sending Repsonse...');
+  }
 
   render() {
 
@@ -90,7 +133,12 @@ class App extends Component {
         //* When User is logged in, and gameMode=true, render GameContainer */}
         //*================================================================= */}
           <React.Fragment>
-            <GameContainer results={this.state.results} gameMode={this.state.gameMode} question={this.state.question} />
+            <GameContainer
+              choice={this.state.choice}
+              results={this.state.results}
+              gameMode={this.state.gameMode}
+              question={this.state.question}
+              handleChange={this.handleChange}/>
           </React.Fragment>}
         {/* ================================================================= */}
       </div>

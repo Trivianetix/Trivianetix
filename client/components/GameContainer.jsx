@@ -10,7 +10,6 @@ class GameContainer extends Component {
     let incorrectAnswers;
     let answers;
     if (question) {
-      console.log('question', question);
       correctAnswer = question.correct_answer;
       incorrectAnswers = question.incorrect_answers;
       answers = [correctAnswer, ...incorrectAnswers];
@@ -18,7 +17,6 @@ class GameContainer extends Component {
         const random = Math.floor(Math.random()*4);
         [answers[i], answers[random]] = [answers[random], answers[i]]
       })
-      console.log('correct', correctAnswer);
     }
 
 
@@ -37,10 +35,12 @@ class GameContainer extends Component {
       //*================================================================= */}
         <React.Fragment>
           <p>Question: {question.question}</p>
-          <input type='radio' name='size' />{answers[0]}
-          <input type='radio' name='size' />{answers[1]}
-          <input type='radio' name='size' />{answers[2]}
-          <input type='radio' name='size' />{answers[3]}
+          <form>
+            <input type='radio' name='questions' onChange={this.props.handleChange} value={answers[0]}/>{answers[0]}
+            <input type='radio' name='questions' onChange={this.props.handleChange} value={answers[1]}/>{answers[1]}
+            <input type='radio' name='questions' onChange={this.props.handleChange} value={answers[2]}/>{answers[2]}
+            <input type='radio' name='questions' onChange={this.props.handleChange} value={answers[3]}/>{answers[3]}
+          </form>
         </React.Fragment>}
       {/* ================================================================= */}
     </div>
