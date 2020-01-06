@@ -47,6 +47,7 @@ body {
     cursor: pointer;
     transition: 0.8s;
     text-align: center;
+    font-family: 'Luckiest Guy';
   }
   .signup-btn:hover{
     transform: scale(0.96);
