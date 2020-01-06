@@ -31,7 +31,7 @@ userModelController.findUser = (req, res, next) => {
             WHERE username = '${username}' AND password = '${password}'
 
     `
-    const values = [username, password];
+    // const values = [username, password];
     db.query(text)
         .then(response => {
                 //if the user doesn't exist or username/password is incorrect
@@ -56,7 +56,6 @@ userModelController.findStats = (req, res, next) => {
     `
     db.query(text)
         .then(response => {
-            //if the user doesn't exist or username/password is incorrect
             if (response.rows[0]) {
                 console.log('User ', req.params.username , ' Games played: ', response.rows[0].games_played , ' Correct answers: ', response.rows[0].correct_answers);
                 res.locals.stats = response.rows[0];   
@@ -81,18 +80,28 @@ userModelController.questions = async (req, res, next) => {
 }
 
 // used for when a user wants to update their information -- stretch feature?
-userModelController.updateUser = (req, res, next) => {
-    const { username, password, age } = req.body;
-    const text = `
-        UPDATE users
-        SET username = ${username}
-        SET password = ${password}
-        SET age = ${age}
-        WHERE username = ${username}
+userModelController.updateUser = async (req, res, next) => {
+    const { username, correctAnswers } = req.body;
+    const text1 = `
+        SELECT games_played
+        FROM users
+        WHERE username = '${username}'
     `
-    const values = [username, password, age];
 
-    db.query(text, values)
+await db.query(text1)
+    .then(response => res.locals.gamesPlayed = response.rows[0].games_played)
+    .catch(err => console.log(err))
+
+    const updatedGame = res.locals.gamesPlayed + 1;
+
+    const text2 = `
+        UPDATE users
+        SET games_played = '${updatedGame}', correct_answers = '${correctAnswers}'
+        WHERE username = '${username}'
+    `
+    // const values = [username, password, age];
+
+   await db.query(text2)
         .then(response => console.log(response))
         .catch(err => console.log(err))
 
