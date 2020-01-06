@@ -9,13 +9,7 @@ class Stats extends Component {
     let scoreBoard = <p>You're Score: {percentageRight}%</p>;
 
     return (
-      <React.Fragment>
-        {/* ================================================================= */}
-        {/* When game is playing, hide this component */}
-        {/* ================================================================= */}
-        {gameMode ? scoreBoard : null}
-        {/* ================================================================= */}
-      </React.Fragment>
+      <div>{scoreBoard}</div>
     );
   }
 }

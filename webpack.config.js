@@ -10,13 +10,8 @@ module.exports = {
     // contentBase: path.resolve(__dirname, "build")
     publicPath: "/build/",
     proxy: {
-<<<<<<< HEAD
-      "/api": "http://localhost:3000"
-    }
-=======
       '/': 'http://localhost:3000',
     },
->>>>>>> 8035306accd4ea36b71e3b3057197aaa0c4fd38f
   },
   mode: process.env.NODE_ENV,
   module: {

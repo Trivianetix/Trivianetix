@@ -15,6 +15,7 @@ class App extends Component {
       //      stats: {gamesPlayed: 5, correctAnswers: 12},
       // correctResponses: [],
       // incorrectResponses: [],
+      // question:{}
 
       //MOCK DATA
       logged_in: true,
@@ -32,8 +33,16 @@ class App extends Component {
       ],
       stats: { gamesPlayed: 5, correctAnswers: 12 },
       correctResponses: [],
-      incorrectResponses: []
+      incorrectResponses: [],
+      question:{}
     };
+
+
+
+    // Function binds=================================================
+    this.startGame = this.startGame.bind(this);
+
+
   }
 
   // Wait until server is working to test correct data
@@ -50,20 +59,44 @@ class App extends Component {
   //   })
   // }
 
+  startGame(){
+    let gameMode = true;
+    let results = [...this.state.results];
+
+    // populate question
+    let question = results.pop();
+
+    // Updating state
+    this.setState({
+      gameMode,
+      results,
+      question,
+    })
+
+  }
+
+
   render() {
+
+    
     return (
       <div className="app">
-        {/* ================================================================= */}
-        {/* When User is logged in, render UserInfo, Stats, and GameContainer */}
-        {/* ================================================================= */}
-        {this.state.logged_in ?
+        {/* ===================================================================================== */}
+        {/* When User is logged in, and gameMode=false, render UserInfo, Stats, and GameContainer */}
+        {/* ===================================================================================== */}
+        {!this.state.gameMode ?
           <React.Fragment>
             <UserInfo username={this.state.username} gameMode={this.state.gameMode} />
             <Stats stats={this.state.stats} gameMode={this.state.gameMode} />
-            <GameContainer results={this.state.results} gameMode={this.state.gameMode} />
+            <GameContainer results={this.state.results} gameMode={this.state.gameMode} startGame={this.startGame} />
           </React.Fragment>
           :
-          null}
+        //*================================================================= */}
+        //* When User is logged in, and gameMode=true, render GameContainer */}
+        //*================================================================= */}
+          <React.Fragment>
+            <GameContainer results={this.state.results} gameMode={this.state.gameMode} question={this.state.question} />
+          </React.Fragment>}
         {/* ================================================================= */}
       </div>
     );
