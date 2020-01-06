@@ -4,12 +4,13 @@ const userModelController = {};
 
 //action whenever a new user signs up 
 userModelController.createUser = (req, res, next) => {
-    const { username, password, age } = req.body;
+    const { username, password, age, state, education } = req.body;
+    console.log('req.body: ', req.body);
     const text = `
-            INSERT INTO users (username, password, age) 
-            values($1, $2, $3)
+            INSERT INTO users (username, password, age, state, education, games_played, correct_answers) 
+            values($1, $2, $3, $4, $5, $6, $7)
         `
-    const values = [username, password, age];
+    const values = [username, password, age, state, education, 0, 0];
 
     db.query(text, values)
         .then(response => console.log(response))
@@ -21,11 +22,11 @@ userModelController.createUser = (req, res, next) => {
 //used for login verification
 userModelController.findUser = (req, res, next) => {
     const { username, password } = req.body;
-    console.log('req.body: ',typeof req.body.username);
+    // console.log('req.body: ', req.body);
     const text = `
             SELECT username
             FROM users
-            WHERE username = '${username}' AND password = '${password}'
+            WHERE username = ${username} AND password = ${password}
 
     `
     const values = [username, password];
