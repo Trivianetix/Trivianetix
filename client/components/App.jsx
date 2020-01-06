@@ -123,7 +123,14 @@ class App extends Component {
         username: this.state.username,
         correctAnswers: this.state.correctResponses.length,
       }),
-    }).catch(err => {
+    }).then(res => res.json())
+    .then(data => {
+      const { gamesPlayed, correctAnswers } = data;
+      this.setState({
+        stats: { gamesPlayed, correctAnswers },
+      })
+    })
+    .catch(err => {
       console.log(err);
     })
   }

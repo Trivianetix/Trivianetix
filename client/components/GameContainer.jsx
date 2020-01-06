@@ -48,15 +48,4 @@ class GameContainer extends Component {
   }
 }
 
-
-// <form>
-
-// </form>
-
-// let answerChoices = [...incorrectAnswers, correctAnswer].map((el, i) => {
-//   const random = Math.floor(Math.random * 4);
-//   [answerChoices[i], answerChoices[random]] = [answerChoices[random], answerChoices[i]];
-//   return el;
-// })
-
 export default GameContainer;
