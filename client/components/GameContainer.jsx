@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 class GameContainer extends Component {
   render() {
     let gameMode = this.props.gameMode;
@@ -34,12 +33,16 @@ class GameContainer extends Component {
       //* When User is logged in, and gameMode=true, render GameContainer */}
       //*================================================================= */}
         <React.Fragment>
-          <p>Question: {question.question}</p>
+          <div dangerouslySetInnerHTML={{__html: question.question}}></div>
           <form>
-            <input type='radio' name='questions' onChange={this.props.handleChange} value={answers[0]}/>{answers[0]}
-            <input type='radio' name='questions' onChange={this.props.handleChange} value={answers[1]}/>{answers[1]}
-            <input type='radio' name='questions' onChange={this.props.handleChange} value={answers[2]}/>{answers[2]}
-            <input type='radio' name='questions' onChange={this.props.handleChange} value={answers[3]}/>{answers[3]}
+            <label htmlFor='A' dangerouslySetInnerHTML={{__html: answers[0]}}></label>
+            <input type='radio' name='questions' id='A' onChange={this.props.handleChange} value={answers[0]}/>
+            <label htmlFor='B' dangerouslySetInnerHTML={{__html: answers[1]}}></label>
+            <input type='radio' name='questions' id='B' onChange={this.props.handleChange} value={answers[1]}/>
+            <label htmlFor='C' dangerouslySetInnerHTML={{__html: answers[2]}}></label>
+            <input type='radio' name='questions' id='C' onChange={this.props.handleChange} value={answers[2]}/>
+            <label htmlFor='D' dangerouslySetInnerHTML={{__html: answers[3]}}></label>
+            <input type='radio' name='questions' id='D' onChange={this.props.handleChange} value={answers[3]}/>
           </form>
         </React.Fragment>}
       {/* ================================================================= */}
