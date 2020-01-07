@@ -36,17 +36,17 @@ class GameContainer extends Component {
             <div className='question-app'>
               <div className='question-tag' dangerouslySetInnerHTML={{ __html: question.question }}></div>
               <form className='radio-form'>
-              <input type='radio' name='questions' id='A' onChange={this.props.handleChange} value={answers[0]} />
-                <label className='a' htmlFor='A' dangerouslySetInnerHTML={{ __html: answers[0] }}></label>
+              <input id='buttona' type='radio' name='questions' id='A' onChange={this.props.handleChange} value={answers[0]} />
+                <label id='buttona' className='a' htmlFor='A' dangerouslySetInnerHTML={{ __html: answers[0] }}></label>
                 <br></br>
-                <input type='radio' name='questions' id='B' onChange={this.props.handleChange} value={answers[1]} />
-                <label className='b' htmlFor='B' dangerouslySetInnerHTML={{ __html: answers[1] }}></label>
+                <input id='buttonb' type='radio' name='questions' id='B' onChange={this.props.handleChange} value={answers[1]} />
+                <label id='buttonb' className='b' htmlFor='B' dangerouslySetInnerHTML={{ __html: answers[1] }}></label>
                 <br></br>
-                <input type='radio' name='questions' id='C' onChange={this.props.handleChange} value={answers[2]} />
-                <label className='c' htmlFor='C' dangerouslySetInnerHTML={{ __html: answers[2] }}></label>
+                <input id='buttonc' type='radio' name='questions' id='C' onChange={this.props.handleChange} value={answers[2]} />
+                <label id='buttonc' className='c' htmlFor='C' dangerouslySetInnerHTML={{ __html: answers[2] }}></label>
                 <br></br>
-                <input type='radio' name='questions' id='D' onChange={this.props.handleChange} value={answers[3]} />
-                <label className='d' htmlFor='D' dangerouslySetInnerHTML={{ __html: answers[3] }}></label>
+                <input id='buttond' type='radio' name='questions' id='D' onChange={this.props.handleChange} value={answers[3]} />
+                <label id='buttond' className='d' htmlFor='D' dangerouslySetInnerHTML={{ __html: answers[3] }}></label>
                 <br></br>
               </form>
             </div>
