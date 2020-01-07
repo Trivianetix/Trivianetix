@@ -67,22 +67,39 @@ class App extends Component {
   }
 
   startGame() {
-    let gameMode = this.state.gameMode;
-    let results = [...this.state.results];
-    let question = this.state.question;
+    if (!this.state.gameMode){
+      fetch(`/trivia/${this.state.username}`)
+      .then(res => res.json())
+      .then(data => {
+        const { results, gamesPlayed, correctAnswers} = data;
+        const gameMode = true;
+        const question = results.pop();
+        this.setState({
+          gameMode,
+          results,
+          question,
+          stats: { gamesPlayed, correctAnswers },
+        })
+      })
+      .catch(err => { console.log(err); })
+    } else {
+      let gameMode = this.state.gameMode;
+      let results = [...this.state.results];
+      let question = this.state.question;
 
-    // populate question
-    if (results.length > 0) {
-      question = results.pop();
-      gameMode = true;
+      // populate question
+      if (results.length > 0) {
+        question = results.pop();
+        gameMode = true;
+      }
+      // Updating state
+      this.setState({
+        gameMode,
+        results,
+        question,
+        choice: 'pending',
+      })
     }
-    // Updating state
-    this.setState({
-      gameMode,
-      results,
-      question,
-      choice: 'pending',
-    })
   }
 
   handleChange(e) {
@@ -127,7 +144,7 @@ class App extends Component {
     .then(data => {
       const { gamesPlayed, correctAnswers } = data;
       this.setState({
-        stats: { gamesPlayed, correctAnswers },
+        stats: {gamesPlayed, correctAnswers},
       })
     })
     .catch(err => {
