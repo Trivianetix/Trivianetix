@@ -92,8 +92,8 @@ await db.query(text1)
     .then(response => res.locals.updatedStats = response.rows[0])
     .catch(err => console.log(err))
 
-    res.locals.games_played = res.locals.games_played + 1;
-    res.locals.correct_answers = res.locals.correct_answers + correctAnswers;
+    res.locals.games_played = res.locals.updatedStats.games_played + 1;
+    res.locals.correct_answers = res.locals.updatedStats.correct_answers + correctAnswers;
 
     const text2 = `
         UPDATE users
