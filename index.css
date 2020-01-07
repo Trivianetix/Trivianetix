@@ -13,7 +13,7 @@ body {
     position: relative;
 
     /* Font styles */
-    font-family: 'Raleway', 'Lato', Arial, sans-serif;
+    font-family: 'Luckiest Guy', cursive;
     color: white;
     text-shadow: 0 2px 1px rgba(0,0,0,0.3);
 }
@@ -27,7 +27,7 @@ body {
 
 }
 .sign-in h2 {
-    font-size: 15px;
+    font-size: 20px;
     padding-bottom: 5px;
     color: #4e3043;
     text-align: center;
@@ -45,8 +45,9 @@ body {
     /* Styles */
     border: 1px solid #4e3043; /* Fallback */
     border: 1px solid rgba(78,48,67, 0.8);
-    background: rgba(0,0,0,0.15);
+    background: whitesmoke;
     border-radius: 2px;
+    opacity: 75%;
     box-shadow: 
         0 1px 0 rgba(255,255,255,0.2), 
         inset 0 1px 1px rgba(0,0,0,0.1);
@@ -57,9 +58,10 @@ body {
     transition: all 0.3s ease-out;
 
     /* Font styles */
-    font-family: 'Raleway', 'Lato', Arial, sans-serif;
+    font-family: 'Luckiest Guy', cursive;
+    text-align: center;
     color: black;
-    font-size: 10px;
+    font-size: 13px;;
 }
 .sign-in input::-webkit-input-placeholder {
     color: rgba(37,21,26,0.5);
@@ -81,6 +83,8 @@ body {
 .sign-in input[type=password]:hover {
     border-color: #333;
     font-family: 'Luckiest Guy';
+    font-size: 15px;
+    width: 95%;
 }
 
 .sign-in input[type=text]:focus,
@@ -92,7 +96,8 @@ body {
         0 0 0 3px rgba(255,255,255,0.15);
     outline: none;
     font-family: 'Luckiest Guy';
-    width: 100%;
+    font-size: 15px;
+    width: 95%;
 }
 
 /* Fallback */
@@ -106,7 +111,7 @@ body {
     padding: 8px 5px;
     
     /* Styles */
-    background: linear-gradient(rgba(99,64,86,0.5), rgba(76,49,65,0.7));    
+    background: linear-gradient(rgba(99, 88, 64, 0.797), rgba(76,49,65,0.7));    
     border-radius: 5px;
     border: 1px solid #4e3043;
     box-shadow: 
@@ -160,7 +165,7 @@ body {
     font-family: 'Luckiest Guy', cursive;
     color: #4e3043;
     font-size: 20px;
-
+    text-shadow: 0 2px 1px rgba(0,0,0,0.3);
 }
 
 .sign-up input[type=submit] {
@@ -209,3 +214,5 @@ body {
 .no-placeholder .sign-in label {
     display: block;
 }
+
+

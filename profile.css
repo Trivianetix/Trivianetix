@@ -5,6 +5,9 @@ body {
     background-position: top; 
   }
 
+p {
+    font-family: 'Luckiest Guy', cursive;
+}
   .header-tag {
         text-align: center;
         font-size: 72px;
@@ -12,6 +15,10 @@ body {
         /* -webkit-background-clip: text; */
         /* -webkit-text-fill-color: transparent; */
         font-family: 'Luckiest Guy', cursive;
+        color: #4e3043;
+        padding: 100px 50px;
+        padding-bottom: 100px;
+        
     }
     .scoreboard {
         text-align: center;
@@ -26,7 +33,7 @@ body {
     }
 
     .app button {
-        width: 50%;
+        width: 30%;
         padding: 8px 5px;
     
     /* Styles */
@@ -55,15 +62,37 @@ body {
     }
 
     .question-tag {
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        font-size: 25px;
+        font-family: 'Luckiest Guy', cursive;
+        font-size: 35px;
+        color: #4e3043;
+        padding: 150px 50px;
+
     }
 
     .radio-form {
-        font-size: 15px;
+        font-size: 20px;
         text-align: center;
+        font-family: 'Luckiest Guy', cursive;
+    }
+
+    #buttona:hover {
+        font-size: 25px;
+
     }
    
+    #buttonb:hover {
+        font-size: 25px;
+
+    }
+
+    #buttonc:hover {
+        font-size: 25px;
+
+    }
+
+    #buttond:hover {
+        font-size: 25px;
+    }
  
  
  
