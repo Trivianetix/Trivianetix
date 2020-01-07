@@ -14,7 +14,7 @@ profile.post('/', userModelController.findUser, cookieController.setCookie, (req
 })
 
 profile.put('/update', userModelController.updateUser, (req, res) => {
-    res.status(200).JSON({gamesPlayed: res.locals.games_played,
+    res.status(200).json({gamesPlayed: res.locals.games_played,
                           correctAnswers: res.locals.correct_answers});
 })
 

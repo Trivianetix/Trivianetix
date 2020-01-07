@@ -4,7 +4,7 @@ const cookieController = {}
 
 cookieController.setCookie = (req, res, next) => {
     const { username } = req.body;
-    res.cookie('username', username, {httpOnly: true});
+    res.cookie('username', username, {httpOnly: false});
     next();
 }
 
