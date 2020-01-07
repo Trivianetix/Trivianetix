@@ -34,8 +34,8 @@ class GameContainer extends Component {
           //* When User is logged in, and gameMode=true, render GameContainer */}
           //*================================================================= */}
           <React.Fragment>
-            <p>Question: {question.question}</p>
-            <form>
+            <form className='form-tag'>
+              <h1 className='question-tag'>Question: {question.question}</h1>
               <input type='radio' name='questions' onChange={this.props.handleChange} value={answers[0]} />{answers[0]}
               <input type='radio' name='questions' onChange={this.props.handleChange} value={answers[1]} />{answers[1]}
               <input type='radio' name='questions' onChange={this.props.handleChange} value={answers[2]} />{answers[2]}
