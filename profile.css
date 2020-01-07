@@ -8,17 +8,17 @@ body {
   .header-tag {
         text-align: center;
         font-size: 72px;
-        background: -webkit-linear-gradient(#fc466b, #3f5efb);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        /* background: -webkit-linear-gradient(#fc466b, #3f5efb); */
+        /* -webkit-background-clip: text; */
+        /* -webkit-text-fill-color: transparent; */
         font-family: 'Luckiest Guy', cursive;
     }
     .scoreboard {
         text-align: center;
         font-size: 25px;
-        background: -webkit-linear-gradient(red,black);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        /* background: -webkit-linear-gradient(red,black); */
+        /* -webkit-background-clip: text */
+        /* -webkit-text-fill-color: transparent; */
     }
     
     .app{
