@@ -7,15 +7,16 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-    //ACTUAL DEFAULT
+      //ACTUAL DEFAULT
       username: document.cookie.slice(9),
       gameMode: false,
       results: [],
-      stats: {gamesPlayed: 0, correctAnswers: 0},
+      stats: { gamesPlayed: 0, correctAnswers: 0 },
       correctResponses: [],
       incorrectResponses: [],
-      question:{},
-      choice:'none'
+      question: {},
+      choice: 'none',
+      url: "9",
 
       //MOCK DATA
       // username: document.cookie.slice(9),
@@ -48,40 +49,44 @@ class App extends Component {
     // Function binds=================================================
     this.startGame = this.startGame.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.onHandleClick = this.onHandleClick.bind(this);
   }
 
-// Wait until server is working to test correct data
+  // Wait until server is working to test correct data
   componentDidMount() {
     console.log('MOUNTED');
-    fetch(`/trivia/${this.state.username}`)
-    .then(res => res.json())
-    .then(data => {
-      const { username, results, gamesPlayed, correctAnswers} = data;
-      this.setState({
-        username,
-        results,
-        stats: { gamesPlayed, correctAnswers },
-      })
-    })
-    .catch((err) => { console.log(err); })
-  }
-
-  startGame() {
-    if (!this.state.gameMode){
-      fetch(`/trivia/${this.state.username}`)
+    fetch(`/trivia/${this.state.username}/${this.state.url}`)
       .then(res => res.json())
       .then(data => {
-        const { results, gamesPlayed, correctAnswers} = data;
-        const gameMode = true;
-        const question = results.pop();
+        const { username, results, gamesPlayed, correctAnswers } = data;
         this.setState({
-          gameMode,
+          username,
           results,
-          question,
           stats: { gamesPlayed, correctAnswers },
         })
       })
-      .catch(err => { console.log(err); })
+      .catch((err) => { console.log(err); })
+  }
+
+  onHandleClick(e) {
+    this.setState({ url: e.target.value })
+  }
+  startGame() {
+    if (!this.state.gameMode) {
+      fetch(`/trivia/${this.state.username}/${this.state.url}`)
+        .then(res => res.json())
+        .then(data => {
+          const { results, gamesPlayed, correctAnswers } = data;
+          const gameMode = true;
+          const question = results.pop();
+          this.setState({
+            gameMode,
+            results,
+            question,
+            stats: { gamesPlayed, correctAnswers },
+          })
+        })
+        .catch(err => { console.log(err); })
     } else {
       let gameMode = this.state.gameMode;
       let results = [...this.state.results];
@@ -141,15 +146,15 @@ class App extends Component {
         correctAnswers: this.state.correctResponses.length,
       }),
     }).then(res => res.json())
-    .then(data => {
-      const { gamesPlayed, correctAnswers } = data;
-      this.setState({
-        stats: {gamesPlayed, correctAnswers},
+      .then(data => {
+        const { gamesPlayed, correctAnswers } = data;
+        this.setState({
+          stats: { gamesPlayed, correctAnswers },
+        })
       })
-    })
-    .catch(err => {
-      console.log(err);
-    })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   render() {
@@ -162,19 +167,42 @@ class App extends Component {
           <React.Fragment>
             <UserInfo username={this.state.username} gameMode={this.state.gameMode} />
             <Stats stats={this.state.stats} gameMode={this.state.gameMode} />
-            <GameContainer results={this.state.results} gameMode={this.state.gameMode} startGame={this.startGame} />
+
+            <select className="custom-select" onChange={this.onHandleClick}>
+              <option value="9" className="topicButton">General Knowledge (default) </option>
+              <option value="10" > Books</option>
+              <option value="11" > Film</option>
+              <option value="12" > Music</option>
+              <option value="13" > Musicals and Theater</option>
+              <option value="14" > Television</option>
+              <option value="15" > Video Games</option>
+              <option value="16" > Board Games</option>
+              <option value="17" > Science and Nature</option>
+              <option value="18" > Computers</option>
+              <option value="19" > Mathematics</option>
+              <option value="20">Mythology</option>
+              <option value="21" > Sports</option>
+              <option value="22" > Geography</option>
+              <option value="23" > History</option>
+              <option value="24">Politics</option>
+              <option value="25" > Art</option>
+              <option value="26" > Celebrities</option>
+              <option value="27" > Animals</option>
+            </select>
+            <button onClick={() => this.startGame()}>Play Game </button>
           </React.Fragment>
           :
-        //*================================================================= */}
-        //* When User is logged in, and gameMode=true, render GameContainer */}
-        //*================================================================= */}
+          //*================================================================= */}
+          //* When User is logged in, and gameMode=true, render GameContainer */}
+          //*================================================================= */}
           <React.Fragment>
             <GameContainer
+              onHandleClick={this.onHandleClick}
               choice={this.state.choice}
               results={this.state.results}
               gameMode={this.state.gameMode}
               question={this.state.question}
-              handleChange={this.handleChange}/>
+              handleChange={this.handleChange} />
           </React.Fragment>}
         {/* ================================================================= */}
       </div>
