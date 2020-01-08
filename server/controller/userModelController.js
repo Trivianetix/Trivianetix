@@ -34,15 +34,15 @@ userModelController.findUser = (req, res, next) => {
     // const values = [username, password];
     db.query(text)
         .then(response => {
-                //if the user doesn't exist or username/password is incorrect
-                if (response.rows[0]) {
-                    console.log('User ', response.rows[0].username, ' has been verified through SQL DB');
-                    next();
-                } else {
-                    console.log('Username or password is invalid.');
-                    res.send('Invalid username or password. Please sign up or try again.');
-                }
-            })
+            //if the user doesn't exist or username/password is incorrect
+            if (response.rows[0]) {
+                console.log('User ', response.rows[0].username, ' has been verified through SQL DB');
+                next();
+            } else {
+                console.log('Username or password is invalid.');
+                res.send('Invalid username or password. Please sign up or try again.');
+            }
+        })
         .catch(err => console.log(err))
 
 }
@@ -57,7 +57,7 @@ userModelController.findStats = (req, res, next) => {
     db.query(text)
         .then(response => {
             if (response.rows[0]) {
-                console.log('User ', req.params.username , ' Games played: ', response.rows[0].games_played , ' Correct answers: ', response.rows[0].correct_answers);
+                console.log('User ', req.params.username, ' Games played: ', response.rows[0].games_played, ' Correct answers: ', response.rows[0].correct_answers);
                 res.locals.stats = response.rows[0];
                 next();
             } else {
@@ -65,11 +65,13 @@ userModelController.findStats = (req, res, next) => {
                 res.send('Error occurred. Username is not sending properly.');
             }
         })
-    .catch(err => console.log(err))
+        .catch(err => console.log(err))
 }
 
 userModelController.questions = async (req, res, next) => {
-    const url = 'https://opentdb.com/api.php?amount=10&category=9&type=multiple';
+    console.log(req.params.url)
+    const url = 'https://opentdb.com/api.php?amount=10&category=' + req.params.url + '&type=multiple';
+    // const url = req.params.url;
     await fetch(url)
         .then(response => response.json())
         .then(data => {
@@ -88,9 +90,9 @@ userModelController.updateUser = async (req, res, next) => {
         WHERE username = '${username}'
     `
 
-await db.query(text1)
-    .then(response => res.locals.updatedStats = response.rows[0])
-    .catch(err => console.log(err))
+    await db.query(text1)
+        .then(response => res.locals.updatedStats = response.rows[0])
+        .catch(err => console.log(err))
 
     res.locals.games_played = res.locals.updatedStats.games_played + 1;
     res.locals.correct_answers = res.locals.updatedStats.correct_answers + correctAnswers;
@@ -102,7 +104,7 @@ await db.query(text1)
     `
     // const values = [username, password, age];
 
-   await db.query(text2)
+    await db.query(text2)
         .then(response => console.log(response))
         .catch(err => console.log(err))
 

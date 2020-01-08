@@ -24,6 +24,7 @@
     "@babel/preset-react": "^7.7.4",
     "babel-loader": "^8.0.6",
     "body-parser": "^1.19.0",
+    "bootstrap": "^4.4.1",
     "cookie-parser": "^1.4.4",
     "d3": "^5.15.0",
     "express": "^4.17.1",
@@ -33,6 +34,9 @@
     "pg": "^7.17.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-dropdown-button": "^1.0.11",
+    "react-bootstrap": "^1.0.0-beta.16",
+    "reactstrap": "^8.2.0",
     "webpack": "^4.41.5"
   },
   "devDependencies": {
