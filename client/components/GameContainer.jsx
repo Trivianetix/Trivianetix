@@ -18,7 +18,6 @@ class GameContainer extends Component {
       })
     }
 
-
     return (
       <div className="app">
         {/* ===================================================================================== */}
@@ -26,28 +25,60 @@ class GameContainer extends Component {
         {/* ===================================================================================== */}
         {!gameMode ?
           <React.Fragment>
-            <button onClick={() => startGame()}>Play Game </button>
+            <div className='gameCard' onClick={() => startGame()}>Play Game</div>
+            
           </React.Fragment>
           :
           //*================================================================= */}
           //* When User is logged in, and gameMode=true, render GameContainer */}
           //*================================================================= */}
           <React.Fragment>
+            <div class="header">
+              <a href="#default" class="logo">TriviaNetix</a>
+              <div class="header-right">
+                <a class="active" href="/">Home</a>
+                <a href="#user">Profile</a>
+                <a href="/leaderboard">Leaderboard</a>
+              </div>
+            </div>
             <div className='question-app'>
               <div className='question-tag' dangerouslySetInnerHTML={{ __html: question.question }}></div>
+
               <form className='radio-form'>
-              <input id='buttona' type='radio' name='questions' id='A' onChange={this.props.handleChange} value={answers[0]} />
-                <label id='buttona' className='a' htmlFor='A' dangerouslySetInnerHTML={{ __html: answers[0] }}></label>
-                <br></br>
-                <input id='buttonb' type='radio' name='questions' id='B' onChange={this.props.handleChange} value={answers[1]} />
-                <label id='buttonb' className='b' htmlFor='B' dangerouslySetInnerHTML={{ __html: answers[1] }}></label>
-                <br></br>
-                <input id='buttonc' type='radio' name='questions' id='C' onChange={this.props.handleChange} value={answers[2]} />
-                <label id='buttonc' className='c' htmlFor='C' dangerouslySetInnerHTML={{ __html: answers[2] }}></label>
-                <br></br>
-                <input id='buttond' type='radio' name='questions' id='D' onChange={this.props.handleChange} value={answers[3]} />
-                <label id='buttond' className='d' htmlFor='D' dangerouslySetInnerHTML={{ __html: answers[3] }}></label>
-                <br></br>
+                <div className="row">
+                  <div className="column">
+                    <div className="card">
+                      <input id='buttona' type='radio' name='questions' id='A' onChange={this.props.handleChange} value={answers[0]} />
+                      <label id='buttona' className='a' htmlFor='A' dangerouslySetInnerHTML={{ __html: answers[0] }}></label>
+
+                    </div>
+                    <div className="card">
+                      <input id='buttonb' type='radio' name='questions' id='B' onChange={this.props.handleChange} value={answers[1]} />
+                      <label id='buttonb' className='b' htmlFor='B' dangerouslySetInnerHTML={{ __html: answers[1] }}></label>
+
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="column">
+                      <div className="card">
+                        <input id='buttonc' type='radio' name='questions' id='C' onChange={this.props.handleChange} value={answers[2]} />
+                        <label id='buttonc' className='c' htmlFor='C' dangerouslySetInnerHTML={{ __html: answers[2] }}></label>
+
+                      </div>
+                      <div className="card">
+                        <input id='buttond' type='radio' name='questions' id='D' onChange={this.props.handleChange} value={answers[3]} />
+                        <label id='buttond' className='d' htmlFor='D' dangerouslySetInnerHTML={{ __html: answers[3] }}></label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+
+
+
               </form>
             </div>
           </React.Fragment>}

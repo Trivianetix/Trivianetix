@@ -1,10 +1,15 @@
 
+/* body {
+    background: linear-gradient(#bbe1fa, #3282b8, #0f4c75, #1b262c);
+    
+  } */
+
+@import "node_modules/nord/src/nord.css";
+
 body {
-    background: url(https://www.faarmembers.com/wp-content/uploads/2019/01/trivia-background.jpg);
-    background-size:      auto;                      
-    background-repeat:   no-repeat;
-    background-position: center; 
-  }
+  background-color: var(--nord0);
+  color: var(--nord8);
+}
 .sign-in {
     /* Size and position */
     width: 300px;
@@ -13,25 +18,25 @@ body {
     position: relative;
 
     /* Font styles */
-    font-family: 'Luckiest Guy', cursive;
-    color: white;
-    text-shadow: 0 2px 1px rgba(0,0,0,0.3);
+
+
+    /* text-shadow: 0 2px 1px rgba(0,0,0,0.3); */
 }
 
 .sign-in h1 {
     font-size: 50px;
     padding-bottom: 10px;
-    color: #4e3043;
+
     text-align: center;
-    font-family: 'Luckiest Guy', cursive;
+
 
 }
 .sign-in h2 {
     font-size: 20px;
     padding-bottom: 5px;
-    color: #4e3043;
+
     text-align: center;
-    font-family: 'Luckiest Guy';
+
 
 }
 .sign-in input[type=text],
@@ -58,7 +63,7 @@ body {
     transition: all 0.3s ease-out;
 
     /* Font styles */
-    font-family: 'Luckiest Guy', cursive;
+
     text-align: center;
     color: black;
     font-size: 13px;;
@@ -71,18 +76,18 @@ body {
 .sign-in input:-moz-placeholder {
     color: rgba(37,21,26,0.5);
     text-shadow: 0 1px 0 rgba(255,255,255,0.15);
-    font-family: 'Luckiest Guy';
+
 }
 
 .sign-in input:-ms-input-placeholder {
     color: rgba(37,21,26,0.5);
     text-shadow: 0 1px 0 rgba(255,255,255,0.15);
-    font-family: 'Luckiest Guy';
+
 }
 .sign-in input[type=text]:hover,
 .sign-in input[type=password]:hover {
     border-color: #333;
-    font-family: 'Luckiest Guy';
+
     font-size: 15px;
     width: 95%;
 }
@@ -95,7 +100,7 @@ body {
         inset 0 1px 1px rgba(0,0,0,0.1),
         0 0 0 3px rgba(255,255,255,0.15);
     outline: none;
-    font-family: 'Luckiest Guy';
+
     font-size: 15px;
     width: 95%;
 }
@@ -121,11 +126,11 @@ body {
     transition: all 0.3s ease-out;
 
     /* Font styles */
-    color: white;
+
     text-shadow: 0 1px 0 rgba(0,0,0,0.3);
     font-size: 16px;
     font-weight: bold;
-    font-family: 'Luckiest Guy', cursive;
+
 }
 
 .sign-in input[type=submit]:hover {
@@ -162,8 +167,8 @@ body {
 
 #first-time {
     text-align: center;
-    font-family: 'Luckiest Guy', cursive;
-    color: #4e3043;
+
+
     font-size: 20px;
     text-shadow: 0 2px 1px rgba(0,0,0,0.3);
 }
@@ -184,10 +189,10 @@ body {
     transition: all 0.3s ease-out;
 
     /* Font styles */
-    color: white;
+
     text-shadow: 0 1px 0 rgba(0,0,0,0.3);
     font-size: 16px;
-    font-family: 'Luckiest Guy';
+
 }
 .sign-up input[type=submit]:hover {
     box-shadow: 

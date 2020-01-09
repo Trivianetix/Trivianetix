@@ -1,103 +1,193 @@
-body {
-    background: url(https://www.faarmembers.com/wp-content/uploads/2019/01/trivia-background.jpg);
-    background-size:     auto;                      
-    background-repeat:   no-repeat;
-    background-position: top; 
+/* body {
+  background: url(https://www.faarmembers.com/wp-content/uploads/2019/01/trivia-background.jpg);
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: top;
+} */
+
+* {
+  box-sizing: border-box;
+}
+
+/* HEADER */ 
+.header {
+  overflow: hidden;
+  padding: 20px 10px;
+  margin-bottom: 20px;
+}
+
+.header a {
+  float: left;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px; 
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+.header a.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.header a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.header a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+.header-right {
+  float: right;
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 50%;
+  padding: 0 10px;
+}
+
+.card:hover {
+  transition: 0.3s;
+  background-color: gray;
+  z-index: 1;
+  transform: translate(0, -2px);
+  outline: none;
+}
+
+.question-tag {
+  opacity: 90%;
+  float: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  height: 25%;
+  background-color: #556480;
+  border-radius: 10px;
+}
+.gameCard {
+  opacity: 90%;
+  width: 50%;
+  display: inline-block;
+  color: black;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {
+  margin: 10px 10px;
+
+}
+
+/* Clear floats after the columns */
+.row:after {
+  display: table;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
   }
+}
+
+/* Style the counter cards */
+.card {
+    opacity: 90%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  border-radius: 10px;
+}
 
 p {
-    font-family: 'Luckiest Guy', cursive;
+
 }
-  .header-tag {
-        text-align: center;
-        font-size: 72px;
-        /* background: -webkit-linear-gradient(#fc466b, #3f5efb); */
-        /* -webkit-background-clip: text; */
-        /* -webkit-text-fill-color: transparent; */
-        font-family: 'Luckiest Guy', cursive;
-        color: #4e3043;
-        padding: 100px 50px;
-        padding-bottom: 100px;
-        
-    }
-    .scoreboard {
-        text-align: center;
-        font-size: 25px;
-        /* background: -webkit-linear-gradient(red,black); */
-        /* -webkit-background-clip: text */
-        /* -webkit-text-fill-color: transparent; */
-    }
-    
-    .app{
-        text-align: center;
-    }
-
-    .app button {
-        width: 30%;
-        padding: 8px 5px;
-    
-    /* Styles */
-    background: linear-gradient(rgba(51, 235, 14, 0.705), rgba(76,49,65,0.7));    
-    border-radius: 5px;
-    border: 1px solid #4e3043;
-    box-shadow: 
-    	inset 0 1px rgba(255,255,255,0.4), 
-    	0 2px 1px rgba(0,0,0,0.1);
-    cursor: pointer;
-    transition: all 0.3s ease-out;
-
-    /* Font styles */
-    color: white;
-    text-shadow: 0 1px 0 rgba(0,0,0,0.3);
-    font-size: 16px;
-    font-weight: bold;
-    font-family: 'Luckiest Guy', cursive;
-    }
-    .app button:hover {
-        box-shadow: 
-            inset 0 1px rgba(255,255,255,0.2), 
-            inset 0 20px 30px rgba(99,64,86,0.5);
-        font-weight: bolder;
-        font-size: 23px;
-    }
-
-    .question-tag {
-        font-family: 'Luckiest Guy', cursive;
-        font-size: 35px;
-        color: #4e3043;
-        padding: 150px 50px;
-
-    }
-
-    .radio-form {
-        font-size: 20px;
-        text-align: center;
-        font-family: 'Luckiest Guy', cursive;
-    }
-
-    #buttona:hover {
-        font-size: 25px;
-
-    }
-   
-    #buttonb:hover {
-        font-size: 25px;
-
-    }
-
-    #buttonc:hover {
-        font-size: 25px;
-
-    }
-
-    #buttond:hover {
-        font-size: 25px;
-    }
- 
- 
- 
- 
- 
- 
+.header-tag {
+  text-align: center;
+  font-size: 72px;
+  /* background: -webkit-linear-gradient(#fc466b, #3f5efb); */
+  /* -webkit-background-clip: text; */
+  /* -webkit-text-fill-color: transparent; */
 
 
+  padding: 100px 50px;
+  padding-bottom: 100px;
+}
+.scoreboard {
+  text-align: center;
+  font-size: 25px;
+  /* background: -webkit-linear-gradient(red,black); */
+  /* -webkit-background-clip: text */
+  /* -webkit-text-fill-color: transparent; */
+}
+
+.app {
+  text-align: center;
+}
+
+.app button {
+  width: 30%;
+  padding: 8px 5px;
+
+  /* Styles */
+  background: linear-gradient(rgba(51, 235, 14, 0.705), rgba(76, 49, 65, 0.7));
+  border-radius: 5px;
+  border: 1px solid #4e3043;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.4), 0 2px 1px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+
+  /* Font styles */
+
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+  font-size: 16px;
+  font-weight: bold;
+
+}
+.app button:hover {
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.2),
+    inset 0 20px 30px rgba(99, 64, 86, 0.5);
+  font-weight: bolder;
+  font-size: 23px;
+}
+
+.question-tag {
+
+  font-size: 35px;
+
+  padding: 150px 50px;
+}
+
+.radio-form {
+  font-size: 20px;
+  text-align: center;
+
+}
+
+/* #buttona:hover {
+  font-size: 25px;
+}
+
+#buttonb:hover {
+  font-size: 25px;
+}
+
+#buttonc:hover {
+  font-size: 25px;
+}
+
+#buttond:hover {
+  font-size: 25px;
+} */

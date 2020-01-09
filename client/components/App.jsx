@@ -7,15 +7,15 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-    //ACTUAL DEFAULT
+      //ACTUAL DEFAULT
       username: document.cookie.slice(9),
       gameMode: false,
       results: [],
-      stats: {gamesPlayed: 0, correctAnswers: 0},
+      stats: { gamesPlayed: 0, correctAnswers: 0 },
       correctResponses: [],
       incorrectResponses: [],
-      question:{},
-      choice:'none'
+      question: {},
+      choice: 'none'
 
       //MOCK DATA
       // username: document.cookie.slice(9),
@@ -50,38 +50,38 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-// Wait until server is working to test correct data
+  // Wait until server is working to test correct data
   componentDidMount() {
     console.log('MOUNTED');
     fetch(`/trivia/${this.state.username}`)
-    .then(res => res.json())
-    .then(data => {
-      const { username, results, gamesPlayed, correctAnswers} = data;
-      this.setState({
-        username,
-        results,
-        stats: { gamesPlayed, correctAnswers },
-      })
-    })
-    .catch((err) => { console.log(err); })
-  }
-
-  startGame() {
-    if (!this.state.gameMode){
-      fetch(`/trivia/${this.state.username}`)
       .then(res => res.json())
       .then(data => {
-        const { results, gamesPlayed, correctAnswers} = data;
-        const gameMode = true;
-        const question = results.pop();
+        const { username, results, gamesPlayed, correctAnswers } = data;
         this.setState({
-          gameMode,
+          username,
           results,
-          question,
           stats: { gamesPlayed, correctAnswers },
         })
       })
-      .catch(err => { console.log(err); })
+      .catch((err) => { console.log(err); })
+  }
+
+  startGame() {
+    if (!this.state.gameMode) {
+      fetch(`/trivia/${this.state.username}`)
+        .then(res => res.json())
+        .then(data => {
+          const { results, gamesPlayed, correctAnswers } = data;
+          const gameMode = true;
+          const question = results.pop();
+          this.setState({
+            gameMode,
+            results,
+            question,
+            stats: { gamesPlayed, correctAnswers },
+          })
+        })
+        .catch(err => { console.log(err); })
     } else {
       let gameMode = this.state.gameMode;
       let results = [...this.state.results];
@@ -103,6 +103,7 @@ class App extends Component {
   }
 
   handleChange(e) {
+    console.log(e.target)
     let gameMode = this.state.gameMode;
     const choice = e.target.value;
     const correct = this.state.question.correct_answer;
@@ -111,22 +112,32 @@ class App extends Component {
     console.log('button value', e.target.value);
     console.log('correct', correct);
     if (choice === correct) {
+      document.getElementById('buttona').style.backgroundColor = 'green';
+
       correctResponses.push(this.state.question)
     } else {
       incorrectResponses.push(this.state.question);
+      document.getElementById('buttona').style.backgroundColor = 'red';
+
     }
-    if (this.state.results.length > 0) {
-      this.startGame();
-    } else {
-      this.sendResponse();
-      gameMode = false;
-    }
+
     e.target.checked = false;
-    this.setState({
-      gameMode,
-      correctResponses,
-      incorrectResponses,
-    })
+    setTimeout((e) => {
+      if (this.state.results.length > 0) {
+        this.startGame();
+      }
+      else {
+        this.sendResponse();
+        gameMode = false;
+      }
+      e.target.checked = false;
+      this.setState({
+        gameMode,
+        correctResponses,
+        incorrectResponses,
+      })
+    }
+      , 2000)
   }
 
   sendResponse() {
@@ -141,15 +152,15 @@ class App extends Component {
         correctAnswers: this.state.correctResponses.length,
       }),
     }).then(res => res.json())
-    .then(data => {
-      const { gamesPlayed, correctAnswers } = data;
-      this.setState({
-        stats: {gamesPlayed, correctAnswers},
+      .then(data => {
+        const { gamesPlayed, correctAnswers } = data;
+        this.setState({
+          stats: { gamesPlayed, correctAnswers },
+        })
       })
-    })
-    .catch(err => {
-      console.log(err);
-    })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   render() {
@@ -165,16 +176,16 @@ class App extends Component {
             <GameContainer results={this.state.results} gameMode={this.state.gameMode} startGame={this.startGame} />
           </React.Fragment>
           :
-        //*================================================================= */}
-        //* When User is logged in, and gameMode=true, render GameContainer */}
-        //*================================================================= */}
+          //*================================================================= */}
+          //* When User is logged in, and gameMode=true, render GameContainer */}
+          //*================================================================= */}
           <React.Fragment>
             <GameContainer
               choice={this.state.choice}
               results={this.state.results}
               gameMode={this.state.gameMode}
               question={this.state.question}
-              handleChange={this.handleChange}/>
+              handleChange={this.handleChange} />
           </React.Fragment>}
         {/* ================================================================= */}
       </div>
