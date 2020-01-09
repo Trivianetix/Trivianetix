@@ -69,7 +69,7 @@ userModelController.findStats = (req, res, next) => {
 }
 
 userModelController.questions = async (req, res, next) => {
-    const url = 'https://opentdb.com/api.php?amount=10&category=9&type=multiple';
+    const url = 'https://opentdb.com/api.php?amount=20&category=15&type=multiple';
     await fetch(url)
         .then(response => response.json())
         .then(data => {

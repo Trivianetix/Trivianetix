@@ -103,7 +103,12 @@ class App extends Component {
   }
 
   handleChange(e) {
-    console.log(e.target)
+    console.log('e.target ', e.target)
+    console.log('query selector ', document.querySelector("#buttonc"))
+    console.log('a value?????', document.querySelector("#buttona").firstChild.defaultValue)
+    console.log('b value?????', document.querySelector("#buttonb").firstChild.defaultValue)
+    console.log('c value?????', document.querySelector("#buttonc").firstChild.defaultValue)
+    console.log('d value?????', document.querySelector("#buttond").firstChild.defaultValue)
     let gameMode = this.state.gameMode;
     const choice = e.target.value;
     const correct = this.state.question.correct_answer;
@@ -112,17 +117,35 @@ class App extends Component {
     console.log('button value', e.target.value);
     console.log('correct', correct);
     if (choice === correct) {
-      document.getElementById('buttona').style.backgroundColor = 'green';
-
+      document.getElementById(e.target.labels[0].id).style.backgroundColor = 'green';
       correctResponses.push(this.state.question)
     } else {
       incorrectResponses.push(this.state.question);
-      document.getElementById('buttona').style.backgroundColor = 'red';
+      document.getElementById(e.target.labels[0].id).style.backgroundColor = 'red';
 
+      if(document.querySelector("#buttona").firstChild.defaultValue === correct) {
+        document.getElementById('buttona').style.backgroundColor = 'green';
+      }
+      if(document.querySelector("#buttonb").firstChild.defaultValue === correct) {
+        document.getElementById('buttonb').style.backgroundColor = 'green';
+      }
+      if(document.querySelector("#buttonc").firstChild.defaultValue === correct) {
+        document.getElementById('buttonc').style.backgroundColor = 'green';
+      }
+      if(document.querySelector("#buttond").firstChild.defaultValue === correct) {
+        document.getElementById('buttond').style.backgroundColor = 'green';
+      }
     }
+
+
 
     e.target.checked = false;
     setTimeout((e) => {
+      document.getElementById('buttona').style.backgroundColor = '';
+      document.getElementById('buttonb').style.backgroundColor = '';
+      document.getElementById('buttonc').style.backgroundColor = '';
+      document.getElementById('buttond').style.backgroundColor = '';
+
       if (this.state.results.length > 0) {
         this.startGame();
       }
